@@ -1,0 +1,295 @@
+‎<!DOCTYPE html>
+‎<html lang="id">
+‎<head>
+‎    <meta charset="UTF-8">
+‎    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+‎    <title>Daftar Hadir Digital</title>
+‎    <!-- Tailwind CSS CDN -->
+‎    <script src="https://cdn.tailwindcss.com"></script>
+‎    <!-- Google Fonts - Inter -->
+‎    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+‎    <style>
+‎        body {
+‎            font-family: 'Inter', sans-serif;
+‎            background-color: #f0f2f5; /* Warna latar belakang lembut */
+‎            display: flex;
+‎            justify-content: center;
+‎            align-items: flex-start; /* Align items to the start to allow scrolling */
+‎            min-height: 100vh; /* Minimum height for full viewport */
+‎            padding: 20px; /* Padding around the content */
+‎            box-sizing: border-box;
+‎        }
+‎        .container {
+‎            background-color: #ffffff;
+‎            border-radius: 1.5rem; /* Lebih bulat */
+‎            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+‎            padding: 2.5rem; /* Padding lebih besar */
+‎            width: 100%;
+‎            max-width: 600px; /* Lebar maksimum untuk desktop */
+‎            margin-top: 2rem; /* Margin atas agar tidak terlalu mepet */
+‎        }
+‎        .input-field {
+‎            width: 100%;
+‎            padding: 0.75rem 1rem;
+‎            margin-bottom: 1rem;
+‎            border: 1px solid #d1d5db; /* Warna border abu-abu */
+‎            border-radius: 0.5rem; /* Sudut sedikit membulat */
+‎            font-size: 1rem;
+‎            color: #374151; /* Warna teks abu-abu gelap */
+‎            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+‎        }
+‎        .input-field:focus {
+‎            outline: none;
+‎            border-color: #3b82f6; /* Warna biru saat fokus */
+‎            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); /* Shadow biru saat fokus */
+‎        }
+‎        .btn-primary {
+‎            background-color: #3b82f6; /* Biru cerah */
+‎            color: white;
+‎            padding: 0.75rem 1.5rem;
+‎            border-radius: 0.75rem; /* Lebih bulat */
+‎            font-size: 1.125rem; /* Teks lebih besar */
+‎            font-weight: 600;
+‎            cursor: pointer;
+‎            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+‎            width: 100%;
+‎            border: none;
+‎        }
+‎        .btn-primary:hover {
+‎            background-color: #2563eb; /* Biru lebih gelap saat hover */
+‎            transform: translateY(-2px); /* Efek sedikit terangkat */
+‎        }
+‎        .btn-primary:active {
+‎            transform: translateY(0); /* Kembali ke posisi semula saat diklik */
+‎        }
+‎        .message-box {
+‎            background-color: #e0f2fe; /* Biru muda */
+‎            color: #0c4a6e; /* Biru gelap */
+‎            padding: 1rem;
+‎            border-radius: 0.75rem;
+‎            margin-top: 1.5rem;
+‎            text-align: center;
+‎            font-weight: 500;
+‎            display: none; /* Sembunyikan secara default */
+‎            border: 1px solid #90cdf4; /* Border biru */
+‎        }
+‎        .logo-placeholder {
+‎            width: 80px;
+‎            height: 80px;
+‎            background-color: #e2e8f0; /* Warna abu-abu terang */
+‎            border-radius: 50%; /* Bentuk lingkaran */
+‎            display: flex;
+‎            justify-content: center;
+‎            align-items: center;
+‎            font-weight: bold;
+‎            color: #64748b; /* Warna teks abu-abu */
+‎            font-size: 0.75rem;
+‎            text-align: center;
+‎            line-height: 1;
+‎            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+‎        }
+‎        /* Responsive adjustments */
+‎        @media (max-width: 768px) {
+‎            .container {
+‎                padding: 1.5rem;
+‎                margin-top: 1rem;
+‎            }
+‎            .btn-primary {
+‎                font-size: 1rem;
+‎                padding: 0.6rem 1.2rem;
+‎            }
+‎            .logo-placeholder {
+‎                width: 60px;
+‎                height: 60px;
+‎                font-size: 0.6rem;
+‎            }
+‎        }
+‎    </style>
+‎</head>
+‎<body>
+‎    <div class="container">
+‎        <div class="flex flex-col items-center mb-6">
+‎            <div class="flex items-center space-x-4 mb-4">
+‎                <!-- Placeholder for Universitas Murni Teguh Logo -->
+‎                <div class="logo-placeholder">
+‎                    Logo UMT
+‎                </div>
+‎                <!-- Placeholder for Awen Asia Computindo Logo -->
+‎                <div class="logo-placeholder">
+‎                    Logo AAC
+‎                </div>
+‎            </div>
+‎            <h1 class="text-3xl font-bold text-gray-800 text-center mb-2">Daftar Hadir Digital</h1>
+‎            <p class="text-lg text-gray-600 text-center">Universitas Murni Teguh & Awen Asia Computindo</p>
+‎        </div>
+‎
+‎        <form id="checkinForm" class="space-y-4">
+‎            <div>
+‎                <label for="namaLengkap" class="block text-gray-700 text-sm font-medium mb-1">Nama Lengkap:</label>
+‎                <input type="text" id="namaLengkap" name="namaLengkap" class="input-field" placeholder="Masukkan nama lengkap Anda" required>
+‎            </div>
+‎            <div>
+‎                <label for="nim" class="block text-gray-700 text-sm font-medium mb-1">NIM:</label>
+‎                <input type="text" id="nim" name="nim" class="input-field" placeholder="Masukkan NIM Anda" required>
+‎            </div>
+‎            <div>
+‎                <label for="programStudi" class="block text-gray-700 text-sm font-medium mb-1">Program Studi:</label>
+‎                <input type="text" id="programStudi" name="programStudi" class="input-field" placeholder="Contoh: Jurusan Anda" required>
+‎            </div>
+‎            <div>
+‎                <label for="email" class="block text-gray-700 text-sm font-medium mb-1">Email (Opsional):</label>
+‎                <input type="email" id="email" name="email" class="input-field" placeholder="Contoh: nama@example.com">
+‎            </div>
+‎
+‎            <div class="mt-6">
+‎                <label class="block text-gray-700 text-sm font-medium mb-2">
+‎                    Apakah Anda tertarik untuk mendapatkan informasi lebih lanjut mengenai program magang di Awen Asia Computindo?
+‎                </label>
+‎                <div class="flex items-center space-x-4">
+‎                    <input type="radio" id="minatMagangYa" name="minatMagang" value="Ya" class="text-blue-600 focus:ring-blue-500" required>
+‎                    <label for="minatMagangYa" class="text-gray-700">Ya</label>
+‎                    <input type="radio" id="minatMagangTidak" name="minatMagang" value="Tidak" class="text-blue-600 focus:ring-blue-500">
+‎                    <label for="minatMagangTidak" class="text-gray-700">Tidak</label>
+‎                </div>
+‎            </div>
+‎
+‎            <button type="submit" class="btn-primary mt-6">Check-in Sekarang</button>
+‎        </form>
+‎
+‎        <div id="messageBox" class="message-box mt-6">
+‎            <!-- Pesan konfirmasi akan ditampilkan di sini -->
+‎        </div>
+‎
+‎        <div id="loadingSpinner" class="hidden text-center mt-4">
+‎            <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+‎                <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+‎            </div>
+‎            <p class="text-gray-600 mt-2">Sedang memproses...</p>
+‎        </div>
+‎    </div>
+‎
+‎    <script type="module">
+‎        // Import the functions you need from the SDKs you need
+‎        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+‎        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+‎
+‎        // --- TEMPELKAN KONFIGURASI FIREBASE ANDA DI SINI ---
+‎        // Ganti seluruh objek di bawah ini dengan `firebaseConfig` yang Anda salin dari Firebase Console.
+‎        const firebaseConfig = {
+‎  apiKey: "AIzaSyDa7olnwXqPzvsyzdajT-nUHrcpfis3-ns",
+‎  authDomain: "services-962a4.firebaseapp.com",
+‎  projectId: "services-962a4",
+‎  storageBucket: "services-962a4.firebasestorage.app",
+‎  messagingSenderId: "148528145900",
+‎  appId: "1:148528145900:web:488b434226f758784eccc9",
+‎  measurementId: "G-MS3NG5X2ST"
+‎};
+‎
+‎        // Inisialisasi Firebase
+‎        const app = initializeApp(firebaseConfig);
+‎        const db = getFirestore(app);
+‎
+‎        // Fungsi untuk mendapatkan waktu saat ini dalam format yang mudah dibaca
+‎        function getCurrentDateTime() {
+‎            const now = new Date();
+‎            const options = {
+‎                year: 'numeric',
+‎                month: 'long',
+‎                day: 'numeric',
+‎                hour: '2-digit',
+‎                minute: '2-digit',
+‎                second: '2-digit',
+‎                hour12: false
+‎            };
+‎            return now.toLocaleString('id-ID', options);
+‎        }
+‎
+‎        // Dapatkan elemen form, message box, dan loading spinner
+‎        const checkinForm = document.getElementById('checkinForm');
+‎        const messageBox = document.getElementById('messageBox');
+‎        const loadingSpinner = document.getElementById('loadingSpinner');
+‎        const submitButton = checkinForm.querySelector('button[type="submit"]');
+‎
+‎        // Tambahkan event listener untuk submit form
+‎        checkinForm.addEventListener('submit', async function(event) {
+‎            event.preventDefault(); // Mencegah form untuk refresh halaman
+‎
+‎            // Sembunyikan pesan sebelumnya dan tampilkan spinner
+‎            messageBox.style.display = 'none';
+‎            loadingSpinner.classList.remove('hidden');
+‎            submitButton.disabled = true; // Nonaktifkan tombol saat memproses
+‎
+‎            // Ambil nilai dari input form
+‎            const namaLengkap = document.getElementById('namaLengkap').value;
+‎            const nim = document.getElementById('nim').value;
+‎            const programStudi = document.getElementById('programStudi').value;
+‎            const email = document.getElementById('email').value;
+‎            const minatMagang = document.querySelector('input[name="minatMagang"]:checked')?.value;
+‎
+‎            // Validasi sederhana: pastikan field wajib terisi
+‎            if (!namaLengkap || !nim || !programStudi || !minatMagang) {
+‎                messageBox.style.display = 'block';
+‎                messageBox.style.backgroundColor = '#fee2e2'; /* Merah muda untuk error */
+‎                messageBox.style.color = '#991b1b'; /* Merah gelap */
+‎                messageBox.style.borderColor = '#fca5a5'; /* Border merah */
+‎                messageBox.innerHTML = `<p class="font-bold text-lg mb-2">Peringatan!</p><p>Mohon lengkapi semua data wajib.</p>`;
+‎                loadingSpinner.classList.add('hidden');
+‎                submitButton.disabled = false;
+‎                return;
+‎            }
+‎
+‎            // Dapatkan waktu check-in otomatis dan timestamp
+‎            const waktuCheckin = getCurrentDateTime();
+‎            const timestamp = new Date().getTime(); // Untuk sorting di database
+‎
+‎            // Buat objek data kehadiran
+‎            const dataKehadiran = {
+‎                namaLengkap: namaLengkap,
+‎                nim: nim,
+‎                programStudi: programStudi,
+‎                email: email || null, // Email bisa null jika tidak diisi
+‎                minatMagang: minatMagang,
+‎                waktuCheckin: waktuCheckin,
+‎                timestamp: timestamp
+‎            };
+‎
+‎            try {
+‎                // Kirim data ke koleksi 'daftar_hadir' di Firestore
+‎                const docRef = await addDoc(collection(db, "daftar_hadir"), dataKehadiran);
+‎                console.log("Dokumen berhasil ditulis dengan ID: ", docRef.id);
+‎
+‎                // Tampilkan pesan sukses
+‎                messageBox.style.display = 'block';
+‎                messageBox.style.backgroundColor = '#e0f2fe'; /* Biru muda */
+‎                messageBox.style.color = '#0c4a6e'; /* Biru gelap */
+‎                messageBox.style.borderColor = '#90cdf4'; /* Border biru */
+‎                messageBox.innerHTML = `
+‎                    <p class="font-bold text-lg mb-2">Check-in Berhasil!</p>
+‎                    <p>Terima kasih, <strong>${namaLengkap}</strong>, atas kehadiran Anda.</p>
+‎                    <p>Waktu Check-in: ${waktuCheckin}</p>
+‎                    <p>Minat Magang Awen Asia Computindo: ${minatMagang}</p>
+‎                `;
+‎
+‎                // Kosongkan form setelah submit
+‎                checkinForm.reset();
+‎            } catch (e) {
+‎                // Tangani error jika terjadi kegagalan
+‎                console.error("Error saat menambahkan dokumen: ", e);
+‎                messageBox.style.display = 'block';
+‎                messageBox.style.backgroundColor = '#fee2e2'; /* Merah muda untuk error */
+‎                messageBox.style.color = '#991b1b'; /* Merah gelap */
+‎                messageBox.style.borderColor = '#fca5a5'; /* Border merah */
+‎                messageBox.innerHTML = `
+‎                    <p class="font-bold text-lg mb-2">Check-in Gagal!</p>
+‎                    <p>Terjadi kesalahan: ${e.message}. Mohon coba lagi.</p>
+‎                `;
+‎            } finally {
+‎                // Sembunyikan spinner dan aktifkan tombol kembali
+‎                loadingSpinner.classList.add('hidden');
+‎                submitButton.disabled = false;
+‎            }
+‎        });
+‎    </script>
+‎</body>
+‎</html>
+‎
