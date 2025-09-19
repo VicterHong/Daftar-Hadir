@@ -110,46 +110,44 @@
 ‎    <div class="container">
 ‎        <div class="flex flex-col items-center mb-6">
 ‎            <div class="flex items-center space-x-4 mb-4">
-‎                <!-- Placeholder for Universitas Murni Teguh Logo -->
 ‎                <div class="logo-placeholder">
-‎                    Logo UMT
+‎                    Logo A
 ‎                </div>
-‎                <!-- Placeholder for Awen Asia Computindo Logo -->
 ‎                <div class="logo-placeholder">
-‎                    Logo AAC
+‎                    Logo B
 ‎                </div>
 ‎            </div>
 ‎            <h1 class="text-3xl font-bold text-gray-800 text-center mb-2">Daftar Hadir Digital</h1>
-‎            <p class="text-lg text-gray-600 text-center">Universitas Murni Teguh & Awen Asia Computindo</p>
+‎            <p class="text-lg text-gray-600 text-center">Tolong isikan daftar hadir ini!</p>
 ‎        </div>
 ‎
 ‎        <form id="checkinForm" class="space-y-4">
 ‎            <div>
 ‎                <label for="namaLengkap" class="block text-gray-700 text-sm font-medium mb-1">Nama Lengkap:</label>
-‎                <input type="text" id="namaLengkap" name="namaLengkap" class="input-field" placeholder="Masukkan nama lengkap Anda" required>
+‎                <input type="text" id="namaLengkap" name="namaLengkap" class="input-field" placeholder="Your Full Name" required>
 ‎            </div>
 ‎            <div>
 ‎                <label for="nim" class="block text-gray-700 text-sm font-medium mb-1">NIM:</label>
-‎                <input type="text" id="nim" name="nim" class="input-field" placeholder="Masukkan NIM Anda" required>
+‎                <input type="text" id="nim" name="nim" class="input-field" placeholder="Your NIM" required>
 ‎            </div>
 ‎            <div>
 ‎                <label for="programStudi" class="block text-gray-700 text-sm font-medium mb-1">Program Studi:</label>
-‎                <input type="text" id="programStudi" name="programStudi" class="input-field" placeholder="Contoh: Jurusan Anda" required>
+‎                <input type="text" id="programStudi" name="programStudi" class="input-field" placeholder="Contoh: Your Major" required>
 ‎            </div>
 ‎            <div>
 ‎                <label for="email" class="block text-gray-700 text-sm font-medium mb-1">Email (Opsional):</label>
-‎                <input type="email" id="email" name="email" class="input-field" placeholder="Contoh: nama@example.com">
+‎                <input type="email" id="email" name="email" class="input-field" placeholder="Contoh: name@example.com">
 ‎            </div>
 ‎
 ‎            <div class="mt-6">
 ‎                <label class="block text-gray-700 text-sm font-medium mb-2">
-‎                    Apakah Anda tertarik untuk mendapatkan informasi lebih lanjut mengenai program magang di Awen Asia Computindo?
+‎                    Dengan menekan tombol "Ya", Anda mengonfirmasi bahwa Anda telah menyetujui Syarat & Ketentuan kami dan bersedia menerima informasi layanan lebih lanjut.
 ‎                </label>
 ‎                <div class="flex items-center space-x-4">
-‎                    <input type="radio" id="minatMagangYa" name="minatMagang" value="Ya" class="text-blue-600 focus:ring-blue-500" required>
-‎                    <label for="minatMagangYa" class="text-gray-700">Ya</label>
-‎                    <input type="radio" id="minatMagangTidak" name="minatMagang" value="Tidak" class="text-blue-600 focus:ring-blue-500">
-‎                    <label for="minatMagangTidak" class="text-gray-700">Tidak</label>
+‎                    <input type="radio" id="yourServicesYa" name="yourServices" value="Ya" class="text-blue-600 focus:ring-blue-500" required>
+‎                    <label for="yourServicesYa" class="text-gray-700">Ya</label>
+‎                    <input type="radio" id="yourServicesTidak" name="yourServices" value="Tidak" class="text-blue-600 focus:ring-blue-500">
+‎                    <label for="yourServicesTidak" class="text-gray-700">Tidak</label>
 ‎                </div>
 ‎            </div>
 ‎
@@ -224,10 +222,10 @@
 ‎            const nim = document.getElementById('nim').value;
 ‎            const programStudi = document.getElementById('programStudi').value;
 ‎            const email = document.getElementById('email').value;
-‎            const minatMagang = document.querySelector('input[name="minatMagang"]:checked')?.value;
+‎            const yourServices = document.querySelector('input[name="yourServices"]:checked')?.value;
 ‎
 ‎            // Validasi sederhana: pastikan field wajib terisi
-‎            if (!namaLengkap || !nim || !programStudi || !minatMagang) {
+‎            if (!namaLengkap || !nim || !programStudi || !yourServices) {
 ‎                messageBox.style.display = 'block';
 ‎                messageBox.style.backgroundColor = '#fee2e2'; /* Merah muda untuk error */
 ‎                messageBox.style.color = '#991b1b'; /* Merah gelap */
@@ -248,7 +246,7 @@
 ‎                nim: nim,
 ‎                programStudi: programStudi,
 ‎                email: email || null, // Email bisa null jika tidak diisi
-‎                minatMagang: minatMagang,
+‎                yourServices: yourServices,
 ‎                waktuCheckin: waktuCheckin,
 ‎                timestamp: timestamp
 ‎            };
@@ -267,7 +265,7 @@
 ‎                    <p class="font-bold text-lg mb-2">Check-in Berhasil!</p>
 ‎                    <p>Terima kasih, <strong>${namaLengkap}</strong>, atas kehadiran Anda.</p>
 ‎                    <p>Waktu Check-in: ${waktuCheckin}</p>
-‎                    <p>Minat Magang Awen Asia Computindo: ${minatMagang}</p>
+‎                    <p>Minat Magang Awen Asia Computindo: ${yourServices}</p>
 ‎                `;
 ‎
 ‎                // Kosongkan form setelah submit
